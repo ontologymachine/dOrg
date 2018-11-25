@@ -14,6 +14,7 @@ import {
 import { stepNext, stepBack } from "../../state/actions/daoCreator"
 import NamingStep from "./NamingStep"
 import FoundersStep from "./FoundersStep"
+import TemplatesStep from "./TemplatesStep"
 
 const steps = [
   {
@@ -23,6 +24,10 @@ const steps = [
   {
     title: "Founders",
     content: <FoundersStep />,
+  },
+  {
+    title: "Governance Templates",
+    content: <TemplatesStep />,
   },
 ]
 
