@@ -73,6 +73,8 @@ const templatesStep: React.SFC<Props> = ({ classes }) => (
 
 // TODO: grid of selectable things in scroll view
 // TODO: below it have a SwipeableViews that shows the descriptions
+// https://material-ui.com/demos/selection-controls/
+// https://material.io/tools/icons/?icon=local_florist&style=outline
 
 // STYLE
 const styles = (theme: Theme) =>
