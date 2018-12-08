@@ -52,7 +52,7 @@ const FoundersForm: React.SFC<Props> = ({
       <Grid item xs={12}>
         <TextField
           className={classes.address}
-          onChange={handleChange("lastName")}
+          onChange={handleChange("address")}
           id="address"
           label="Wallet Address"
           value={address}

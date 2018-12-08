@@ -34,24 +34,6 @@ type State = {
 
 interface Props extends WithStyles<typeof styles> {}
 
-// Founder type { address, name, etc }
-// founders[], add to the list when + is used
-// Founder.handleChange changes data inside
-/*
-const ListWrapper = (members: Array<string>) => {
-  
-  return (
-    <>
-      {members.map(addr => {
-        const dataURL = blockies.createDataURL({ seed: addr })
-        return (
-          
-        )
-      })}
-    </>
-  )
-}
-
 /**
  * TODO:
  * - Add state, events, and actions to add addressses to the members array
@@ -72,6 +54,7 @@ class FoundersStep extends React.Component<Props, State> {
 
   render() {
     const { classes } = this.props
+    const { founders } = this.state
     const p1 =
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus etlacinia mauris. Vestibulum non leo lobortis, ultrices metus et, pulvinar metus. Maecenas sit amet laoreet leo, semper dapibus ipsum.Morbi suscipit velit id urna aliquet tempor. Sed quis urna semper nibhvehicula efficitur. Quisque purus neque, bibendum quis gravida a,tempus id metus. Sed sed erat mi. Nam posuere, sapien quis consequattempus, purus leo rutrum metus, sit amet lacinia enim enim ac augue.Vivamus sit amet orci vel nunc iaculis sodales sit amet nec neque.Nunc in purus porta, aliquet eros eu, pretium turpis. Donec fringilla,est a mattis porttitor, lorem diam fringilla tellus, ut feugiat estest maximus lorem."
     const p2 =
@@ -82,20 +65,27 @@ class FoundersStep extends React.Component<Props, State> {
           <ListSubheader>
             Creator&#39;s address: 0xafe8b8f2ef2ac6cb4d263c1a05486a7c5beb27a4
           </ListSubheader>
-          <ExpansionPanel>
-            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-              {/*<img src={dataURL} >*/}
-              {/*<Typography>{addr}</Typography>*/}
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              <FoundersForm
-                address=""
-                firstName=""
-                lastName=""
-                handleChange={this.handleChange}
-              />
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
+          <>
+            {founders.map(founder => {
+              const dataURL = blockies.createDataURL({ seed: founder.address })
+              return (
+                <ExpansionPanel>
+                  <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+                    <img src={dataURL} />
+                    <Typography>{founder.address}</Typography>
+                  </ExpansionPanelSummary>
+                  <ExpansionPanelDetails>
+                    <FoundersForm
+                      address=""
+                      firstName=""
+                      lastName=""
+                      handleChange={this.handleChange}
+                    />
+                  </ExpansionPanelDetails>
+                </ExpansionPanel>
+              )
+            })}
+          </>
           <Button
             className={classes.addButton}
             variant="fab"
