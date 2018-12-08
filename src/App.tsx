@@ -9,7 +9,7 @@ import Notifications from "./components/Notifications"
 
 // TEMP
 import NamingStep from "./components/DaoCreator/NamingStep"
-import FoundersStep from "./components/DaoCreator/FoundersStep"
+import FoundersStep from "./components/DaoCreator/FoundersStep/FoundersStep"
 
 const App: SFC = () => (
   <Layout>

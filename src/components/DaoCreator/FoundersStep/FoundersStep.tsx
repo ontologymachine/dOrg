@@ -37,22 +37,15 @@ interface Props extends WithStyles<typeof styles> {}
 // Founder type { address, name, etc }
 // founders[], add to the list when + is used
 // Founder.handleChange changes data inside
-
+/*
 const ListWrapper = (members: Array<string>) => {
+  
   return (
     <>
       {members.map(addr => {
         const dataURL = blockies.createDataURL({ seed: addr })
         return (
-          <ExpansionPanel>
-            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-              <img src={dataURL} />
-              <Typography>{addr}</Typography>
-            </ExpansionPanelSummary>
-            <ExpansionPanelDetails>
-              <FoundersForm />
-            </ExpansionPanelDetails>
-          </ExpansionPanel>
+          
         )
       })}
     </>
@@ -73,6 +66,10 @@ class FoundersStep extends React.Component<Props, State> {
     }
   }
 
+  handleChange = (valueName: string) => (event: any) => {
+    this.setState({ [valueName]: event.target.value } as any)
+  }
+
   render() {
     const { classes } = this.props
     const p1 =
@@ -85,7 +82,20 @@ class FoundersStep extends React.Component<Props, State> {
           <ListSubheader>
             Creator&#39;s address: 0xafe8b8f2ef2ac6cb4d263c1a05486a7c5beb27a4
           </ListSubheader>
-          {ListWrapper(members)}
+          <ExpansionPanel>
+            <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+              {/*<img src={dataURL} >*/}
+              {/*<Typography>{addr}</Typography>*/}
+            </ExpansionPanelSummary>
+            <ExpansionPanelDetails>
+              <FoundersForm
+                address=""
+                firstName=""
+                lastName=""
+                handleChange={this.handleChange}
+              />
+            </ExpansionPanelDetails>
+          </ExpansionPanel>
           <Button
             className={classes.addButton}
             variant="fab"

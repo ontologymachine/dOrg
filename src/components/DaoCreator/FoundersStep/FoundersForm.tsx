@@ -1,4 +1,5 @@
 import * as React from "react"
+import { connect } from "react-redux"
 import {
   withStyles,
   Theme,
@@ -42,7 +43,7 @@ const FoundersForm: React.SFC<Props> = ({
           id="lastName"
           label="Last Name"
           value={lastName}
-          onChange={handleChange("firstName")}
+          onChange={handleChange("lastName")}
           margin="normal"
           fullWidth
           required
@@ -51,6 +52,7 @@ const FoundersForm: React.SFC<Props> = ({
       <Grid item xs={12}>
         <TextField
           className={classes.address}
+          onChange={handleChange("lastName")}
           id="address"
           label="Wallet Address"
           value={address}
@@ -69,9 +71,15 @@ const styles = ({  }: Theme) =>
     grid: {
       margin: "auto",
     },
-    firstName: {},
-    lastName: {},
-    address: {},
+    firstName: {
+      margin: "auto",
+    },
+    lastName: {
+      margin: "auto",
+    },
+    address: {
+      margin: "auto",
+    },
   })
 
 const componentWithStyles = withStyles(styles)(FoundersForm)

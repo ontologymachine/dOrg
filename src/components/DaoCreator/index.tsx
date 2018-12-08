@@ -14,7 +14,7 @@ import {
 } from "@material-ui/core"
 import { stepNext, stepBack } from "../../state/actions/daoCreator"
 import NamingStep from "./NamingStep"
-import FoundersStep from "./FoundersStep"
+import FoundersStep from "./FoundersStep/FoundersStep"
 import { createDao } from "../../state/actions/daoCreator"
 
 interface Props extends WithStyles<typeof styles> {
