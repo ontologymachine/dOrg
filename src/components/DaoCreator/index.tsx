@@ -27,7 +27,7 @@ type State = {
   daoName: string
   tokenName: string
   tokenSymbol: string
-  founders: Founder[]
+  founders: string[]
 }
 
 const initState: State = {
@@ -44,7 +44,7 @@ class daoCreator extends React.Component<Props, State> {
     this.setState({ [valueName]: event.target.value } as any)
   }
 
-  handleAddFounder = (newFounder: Founder) => {
+  handleAddFounder = (newFounder: string) => {
     this.setState({ founders: R.append(newFounder, this.state.founders) })
   }
 
@@ -58,7 +58,11 @@ class daoCreator extends React.Component<Props, State> {
     {
       title: "Founders",
       component: (inputProps: any) => (
-        <FoundersStep {...inputProps} addFounder={this.handleAddFounder} />
+        <FoundersStep
+          {...inputProps}
+          founders={this.state.founders}
+          addFounder={this.handleAddFounder}
+        />
       ),
     },
   ]

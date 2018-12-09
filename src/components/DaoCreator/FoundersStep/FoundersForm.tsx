@@ -1,4 +1,5 @@
 import * as React from "react"
+
 import { connect } from "react-redux"
 import {
   withStyles,
@@ -10,49 +11,17 @@ import {
 } from "@material-ui/core"
 
 interface Props extends WithStyles<typeof styles> {
-  handleChange: (key: string) => (value: any) => void
-  firstName: string
-  lastName: string
+  handleChange: (newFounder: string) => (value: any) => void
   address: string
 }
 
-const FoundersForm: React.SFC<Props> = ({
-  handleChange,
-  firstName,
-  lastName,
-  address,
-  classes,
-}) => (
+const FoundersForm: React.SFC<Props> = ({ handleChange, address, classes }) => (
   <Grid container spacing={16}>
     <Grid item xs={6}>
       <Grid item xs={12}>
         <TextField
-          className={classes.firstName}
-          id="firstName"
-          label="First Name"
-          value={firstName}
-          onChange={handleChange("firstName")}
-          margin="normal"
-          fullWidth
-          required
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <TextField
-          className={classes.lastName}
-          id="lastName"
-          label="Last Name"
-          value={lastName}
-          onChange={handleChange("lastName")}
-          margin="normal"
-          fullWidth
-          required
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <TextField
           className={classes.address}
-          onChange={handleChange("address")}
+          onChange={handleChange(address)}
           id="address"
           label="Wallet Address"
           value={address}
@@ -69,12 +38,6 @@ const FoundersForm: React.SFC<Props> = ({
 const styles = ({  }: Theme) =>
   createStyles({
     grid: {
-      margin: "auto",
-    },
-    firstName: {
-      margin: "auto",
-    },
-    lastName: {
       margin: "auto",
     },
     address: {
